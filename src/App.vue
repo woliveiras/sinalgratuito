@@ -25,12 +25,15 @@ header {
 </style>
 
 <script>
-export default {
- computed: {
-    displayName() {
-      const { user } = this.$store.state
+import { computed } from 'vue'
+import { useStore } from 'vuex'
 
-      return user?.data?.displayName
+export default {
+  setup () {
+    const store = useStore()
+
+    return {
+      displayName: computed(() => store.state.user?.data?.displayName),
     }
   }
 }
