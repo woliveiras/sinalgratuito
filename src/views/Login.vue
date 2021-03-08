@@ -26,8 +26,7 @@ export default {
                 this.email, this.password
             ).then(
                 user => { 
-                    this.$router.replace('Home'),
-                    console.log(user)
+                    this.$router.replace('Home')
                 },
                 err => { console.log(err.message) }
             )
