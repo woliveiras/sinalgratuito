@@ -2,6 +2,7 @@
   <header>
     <h1>Sinal Gratuito!</h1>
     <p>Internet de graça para que todas as pessoas tenham acesso a informação</p>
+    <p>{{ displayName }}</p>
   </header>
   <router-view/>
 </template>
@@ -22,3 +23,15 @@ header {
   margin-bottom: 2rem;
 }
 </style>
+
+<script>
+export default {
+ computed: {
+    displayName() {
+      const { user } = this.$store.state
+
+      return user?.data?.displayName
+    }
+  }
+}
+</script>
