@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
     <button @click="logout">Sair</button>
   </div>
 </template>

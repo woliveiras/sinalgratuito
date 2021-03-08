@@ -1,5 +1,5 @@
 <template>
-    <h1>Criação de conta</h1>
+    <h3>Criação de conta</h3>
     <input type="email" name="Email" placeholder="Email" v-model="email" />
     <input type="password" name="password" placeholder="Senha" v-model="password" />
     <button @click="signUp">Registrar</button>

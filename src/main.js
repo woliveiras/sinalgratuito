@@ -15,7 +15,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-let mounted = ''
+let mounted = false
 
 firebase.auth().onAuthStateChanged(() => {
     if(!mounted) {

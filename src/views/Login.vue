@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Login</h1>
+        <h3>Login</h3>
         <input type="email" name="Email" placeholder="Email" v-model="email" />
         <input type="password" name="password" placeholder="Senha" v-model="password" />
         <button @click="login">Login</button>
