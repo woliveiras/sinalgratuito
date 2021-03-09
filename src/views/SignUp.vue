@@ -3,15 +3,14 @@
     <input type="text" name="displayName" placeholder="Seu primeiro nome" v-model="displayName" />
     <input type="email" name="Email" placeholder="Email" v-model="email" />
     <input type="password" name="password" placeholder="Senha" v-model="password" />
-    <button @click="signUp">Registrar</button>
+    <button @click="signup">Registrar</button>
     <p>Já possui conta?</p>
     <router-link to="/login">Voltar ao login</router-link>
 </template>
 
 <script>
-import firebase from 'firebase'
-
 export default {
+    name: 'SignUp',
     data() {
         return {
             displayName: '',
@@ -20,19 +19,13 @@ export default {
         }
     },
     methods: {
-        signUp() {
-            firebase.auth().createUserWithEmailAndPassword(
-                this.email,
-                this.password
-            ).then(
-                userData => { 
-                    userData.user.updateProfile({
-                        displayName: this.displayName
-                    })
-                    this.$router.replace('Home')
-                },
-                err => { console.log(err.message) }
-            )
+        async signup() {
+            await this.$store.dispatch('signup', {
+                email: this.email,
+                password: this.password,
+                displayName: this.displayName
+            })
+            this.$router.replace('/')
         }
     }
 }

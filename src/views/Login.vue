@@ -10,10 +10,8 @@
 </template>
 
 <script>
-import firebase from 'firebase'
-
 export default {
-    name: "login",
+    name: "Login",
     data() {
         return {
             email: '',
@@ -21,15 +19,12 @@ export default {
         }
     },
     methods: {
-        login() {
-            firebase.auth().signInWithEmailAndPassword(
-                this.email, this.password
-            ).then(
-                user => { 
-                    this.$router.replace('Home')
-                },
-                err => { console.log(err.message) }
-            )
+        async login() {
+            await this.$store.dispatch('login', {
+                email: this.email,
+                password: this.password
+            })
+            this.$router.replace('/')
         }
     }
 }

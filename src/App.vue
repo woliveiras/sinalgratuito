@@ -29,9 +29,9 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
+  name: 'App',
   setup() {
     const store = useStore()
-
     return {
       displayName: computed(() => store.state.user?.data?.displayName),
     }

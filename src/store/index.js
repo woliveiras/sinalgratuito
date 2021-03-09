@@ -7,7 +7,8 @@ export default createStore({
         user: {
             loggedIn: false,
             data: null
-        }
+        },
+        accessPoints: []
     },
     getters: {
       user(state){

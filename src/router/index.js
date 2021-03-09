@@ -3,7 +3,7 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import SignUp from '@/views/SignUp.vue'
 
-import firebase from 'firebase'
+import { auth } from '@/firebaseUtils'
 
 const routes = [
   {
@@ -12,11 +12,11 @@ const routes = [
   },
   {
     path: "/",
-    redirect: '/login'
+    redirect: '/home'
   },
   {
     path: '/home',
-    name: 'Home',
+    name: 'home',
     component: Home,
     meta: {
       requiresAuth: true
@@ -24,12 +24,12 @@ const routes = [
   },
   {
     path: '/login',
-    name: 'Login',
+    name: 'login',
     component: Login
   },
   {
     path: '/registrar',
-    name: 'SignUp',
+    name: 'signup',
     component: SignUp
   }
 ]
@@ -40,7 +40,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const currentUser = firebase.auth().currentUser
+  const currentUser = auth.currentUser
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
 
   if (requiresAuth && !currentUser) next('Login')
