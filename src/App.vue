@@ -4,7 +4,7 @@
     <p>Internet de graça para que todas as pessoas tenham acesso a informação</p>
     <p>{{ displayName }}</p>
   </header>
-  <router-view/>
+  <router-view />
 </template>
 
 <style>
@@ -29,7 +29,7 @@ import { computed } from 'vue'
 import { useStore } from 'vuex'
 
 export default {
-  setup () {
+  setup() {
     const store = useStore()
 
     return {

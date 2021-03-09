@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import firebase from 'firebase/app'
+import { auth } from '@/firebaseUtils'
 
 export default {
   name: 'Home',
   methods: {
-    logout: function() { firebase.auth().signOut().then(
+    logout: function() { auth.signOut().then(
       this.$router.replace('login')
     )}
   }
