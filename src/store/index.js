@@ -13,6 +13,9 @@ export default createStore({
     getters: {
       user(state){
         return state.user
+      },
+      accessPoints(state) {
+        return state.accessPoints
       }
     },
     actions,

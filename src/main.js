@@ -13,7 +13,10 @@ let mounted = false
 auth.onAuthStateChanged(user => {
     store.dispatch('fetchUser', user)
     if (!mounted) {
-        createApp(App).use(router).use(store).mount('#app')
+        createApp(App)
+            .use(router)
+            .use(store)
+            .mount('#app')
         mounted =  true
     }
 })

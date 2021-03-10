@@ -16,7 +16,10 @@ firebase.initializeApp(firebaseConfig)
 const db = firebase.firestore()
 const auth = firebase.auth()
 
+const accessPointsCollection = db.collection('accessPoints')
+
 export {
     db,
-    auth
+    auth,
+    accessPointsCollection
 }

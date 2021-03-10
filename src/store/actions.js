@@ -1,4 +1,6 @@
-import { auth } from '@/firebaseUtils'
+import { uuid } from 'vue-uuid'
+
+import { auth, accessPointsCollection } from '@/firebaseUtils'
 import router from '../router/index'
 
 export default {
@@ -30,5 +32,29 @@ export default {
     } else {
       commit('SET_USER', null)
     }
-  }
+  },
+  async fetchAccessPoints({ state, commit }) {
+    const accessPoints = 
+          await accessPointsCollection
+            .orderBy("createdOn")
+            .limit(10)
+            .get()
+            .then((querySnapshot) => {
+              return querySnapshot.docs.map(doc => doc.data())
+            })
+            .catch((error) => {
+              console.log("Error getting documents: ", error);
+            });
+    
+    commit('SET_ACCESS_POINTS', accessPoints)
+  },
+  async createAcessPoint({ state, commit }, accessPoint) {
+    await accessPointsCollection.add({
+      createdOn: new Date(),
+      id: uuid.v1(),
+      name: state.accessPoint.name,
+      createBy: state.userProfile.name,
+      address: state.accessPoint.address
+    })
+  },
 }

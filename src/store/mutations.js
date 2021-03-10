@@ -4,5 +4,8 @@ export default {
     },
     SET_USER(state, data) {
       state.user.data = data
+    },
+    SET_ACCESS_POINTS(state, data) {
+      state.accessPoints = data
     }
 }
